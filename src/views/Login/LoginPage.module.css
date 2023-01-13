@@ -1,0 +1,74 @@
+.main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    
+    background-color: #4553fd;
+    
+}
+.divLayout{
+    width: 100%;
+    max-width: 565px;
+}
+
+.sectionMain {
+    width: 100%;
+    min-height: 100%;
+    border-radius: 5px;
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #ffff;
+}
+
+.divLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    width: 100%;
+}
+.divLogo img{
+    width: 375px;
+}
+.form{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form a {
+    text-decoration: none;
+    color: #0d6efd;
+}
+.input{
+    height: 57px;
+    padding: 0 1rem;
+    border: solid 3px #e6e7e9;
+    border-radius: 10px;
+    color: #152037;
+    font-size: inherit;
+    margin-top: 1rem;
+    
+}
+.divButton{
+    align-self: center;
+    margin-top: 2rem;
+}
+.divButton button{
+    min-width: 300px;
+    background-color: #4553fd;
+    color: #ffff;
+    border-radius: 10px;
+    height: 62px;
+    font-size: 22px;
+    border: solid 3px #4553fd;
+}
+.divNewUser{
+    display: flex;
+    flex-direction: row;    
+
+}
