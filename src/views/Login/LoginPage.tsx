@@ -1,10 +1,22 @@
 import { useFormik } from 'formik';
 import classes from "../Login/LoginPage.module.css"
 import logo from "../../asset/logo-crypto.svg"
+import logoGoogle from "../../asset/google.svg"
+import logoMicrosoft from "../../asset/microsoft.svg"
+import invisiblePassword from "../../asset/invisiblePassword.svg"
+import visiblePassword from "../../asset/visiblePassword.svg"
+import { useState } from 'react';
 
 
 function LoginPage() {
-    return (
+    const [isVisiblePassword, setIsVisiblePassword] = useState(false)
+
+    const handleClick = () => setIsVisiblePassword(!isVisiblePassword);
+
+
+
+
+    return (<>
         <main className={classes.main} >
             <section className={classes.sectionMain}>
                 <div className={classes.divLayout}>
@@ -25,7 +37,9 @@ function LoginPage() {
                                 type="password"
                                 name="password"
                                 placeholder='Senha'
-                            />
+                            >
+                                <img src={visiblePassword}/>
+                            </input>
                             <a href="#">Esqueceu sua senha?</a>
                             <div className={classes.divButton}>
                                 <button>
@@ -34,13 +48,26 @@ function LoginPage() {
                             </div>
                             <div className={classes.divNewUser}>
                                 <p>Novo usuário? <a href='#'> Criar Conta</a> </p>
-                                
                             </div>
                         </form>
                     </div>
+                    <div className={classes.loginOptions}>
+                        <h2> ou faça o login com </h2>
+                    </div>
+
+                    <div className={classes.buttonsOptionsLogin}>
+                        <button><img src={logoGoogle} /></button>
+                        <button><img src={logoMicrosoft} /></button>
+                    </div>
                 </div>
+                <footer className={classes.footer}>
+                    <p><a href='#'>FAQ</a></p>
+                    <p>Powered by Transfero</p>
+                </footer>
             </section>
         </main>
+
+    </>
     )
 }
 
