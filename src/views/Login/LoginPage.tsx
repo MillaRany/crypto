@@ -1,19 +1,19 @@
-import { useFormik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import classes from "../Login/LoginPage.module.css"
 import logo from "../../asset/logo-crypto.svg"
 import logoGoogle from "../../asset/google.svg"
 import logoMicrosoft from "../../asset/microsoft.svg"
-import invisiblePassword from "../../asset/invisiblePassword.svg"
-import visiblePassword from "../../asset/visiblePassword.svg"
 import { useState } from 'react';
 
 
 function LoginPage() {
     const [isVisiblePassword, setIsVisiblePassword] = useState(false)
+    const handleClick = () => setIsVisiblePassword(!isVisiblePassword)
 
-    const handleClick = () => setIsVisiblePassword(!isVisiblePassword);
-
-
+    interface values {
+        email: string,
+        password: string
+    }
 
 
     return (<>
@@ -24,32 +24,62 @@ function LoginPage() {
                         <img src={logo} />
                     </div>
                     <div className={classes.divForm}>
-                        <form className={classes.form}>
-                            <h2>Login</h2>
-                            <input
-                                className={classes.input}
-                                type="email"
-                                name="email"
-                                placeholder='Endereço de email'
-                            />
-                            <input
-                                className={classes.input}
-                                type="password"
-                                name="password"
-                                placeholder='Senha'
-                            >
-                                <img src={visiblePassword}/>
-                            </input>
-                            <a href="#">Esqueceu sua senha?</a>
-                            <div className={classes.divButton}>
-                                <button>
-                                    Entrar
-                                </button>
-                            </div>
-                            <div className={classes.divNewUser}>
-                                <p>Novo usuário? <a href='#'> Criar Conta</a> </p>
-                            </div>
-                        </form>
+                        <Formik
+                            initialValues={{
+                                email: '',
+                                password: '',
+                            }}
+                            onSubmit={(values, { resetForm }) => {
+                                console.log(values)
+                                resetForm();
+                            }}>
+                            {({
+                                values,
+                                errors,
+                                touched,
+                                handleSubmit,
+                                handleChange
+                            }) => (
+                                <Form onSubmit={handleSubmit} className={classes.form}>
+                                    <h2>Login</h2>
+                                    <Field
+                                        className={classes.input}
+                                        type="email"
+                                        name="email"
+                                        value={values.email}
+                                        onChange={handleChange}
+                                        placeholder='Endereço de email'
+                                    />
+                                    {
+                                        errors.email && touched.email ? (
+                                            <div>{errors.email}</div>
+                                        ) : null
+                                    }
+                                    <ErrorMessage name='email' />
+                                    <div className={classes.inputPassword}>
+                                        <input
+                                            className={classes.input}
+                                            type={isVisiblePassword ? "text" : "password"}
+                                            name="password"
+                                            value={values.password}
+                                            placeholder='Senha'
+                                            onChange={handleChange}
+                                        />
+                                        {isVisiblePassword ? <span onClick={handleClick} className={classes.invisiblePassword} /> : <span onClick={handleClick} className={classes.visiblePassword} />}
+                                    </div>
+                                    <a href="#">Esqueceu sua senha?</a>
+                                    <div className={classes.divButton}>
+                                        <button>
+                                            Entrar
+                                        </button>
+                                    </div>
+                                    <div className={classes.divNewUser}>
+                                        <p>Novo usuário? <a href='#'> Criar Conta</a> </p>
+                                    </div>
+                                </Form>
+                            )}
+                        </Formik>
+
                     </div>
                     <div className={classes.loginOptions}>
                         <h2> ou faça o login com </h2>
@@ -72,3 +102,4 @@ function LoginPage() {
 }
 
 export default LoginPage
+

@@ -61,9 +61,28 @@
     color: #152037;
     font-size: inherit;
     margin-bottom: 1rem;
-
 }
-
+/* .inputPassword{
+    height: 57px;
+    display: block;
+} */
+.inputPassword input{
+    width: 100%;
+    position: relative;
+}
+.inputPassword span{
+    padding: 10px;
+    min-width: 40px; 
+    background-repeat: no-repeat;
+    padding-left: 3rem;
+}
+.invisiblePassword{
+    background-image: url("../../asset/invisiblePassword.svg");
+    
+}
+.visiblePassword{
+    background-image: url("../../asset/visiblePassword.svg");
+}
 .divButton {
     align-self: center;
     margin-top: 2rem;
