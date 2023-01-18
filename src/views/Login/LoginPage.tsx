@@ -4,43 +4,55 @@ import logo from "../../asset/logo-crypto.svg"
 import logoGoogle from "../../asset/google.svg"
 import logoMicrosoft from "../../asset/microsoft.svg"
 import { useState } from 'react';
+import axios from 'axios';
 
 
 function LoginPage() {
     const [isVisiblePassword, setIsVisiblePassword] = useState(false)
     const handleClick = () => setIsVisiblePassword(!isVisiblePassword)
 
-    interface values {
-        email: string,
-        password: string
+    const initialValues={
+        email: '',
+        password: '',
+    }
+    
+    async function login(email:string, password:string) {
+        fetch(`./fake_users.json`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)})
+      
+            .catch(function (error) {
+                console.log(error)
+            })
+            
     }
 
+    
 
     return (<>
         <main className={classes.main} >
-            <section className={classes.sectionMain}>
+
+                <section className={classes.sectionMain}>
                 <div className={classes.divLayout}>
                     <div className={classes.divLogo}>
                         <img src={logo} />
                     </div>
                     <div className={classes.divForm}>
-                        <Formik
-                            initialValues={{
-                                email: '',
-                                password: '',
-                            }}
+                        <Formik initialValues={initialValues}
+                         
                             onSubmit={(values, { resetForm }) => {
                                 console.log(values)
+                                
                                 resetForm();
+                                login(initialValues.email, initialValues.password)
                             }}>
                             {({
                                 values,
-                                errors,
-                                touched,
                                 handleSubmit,
                                 handleChange
                             }) => (
-                                <Form onSubmit={handleSubmit} className={classes.form}>
+                                <form onSubmit={handleSubmit} className={classes.form}>
                                     <h2>Login</h2>
                                     <Field
                                         className={classes.input}
@@ -50,12 +62,6 @@ function LoginPage() {
                                         onChange={handleChange}
                                         placeholder='Endereço de email'
                                     />
-                                    {
-                                        errors.email && touched.email ? (
-                                            <div>{errors.email}</div>
-                                        ) : null
-                                    }
-                                    <ErrorMessage name='email' />
                                     <div className={classes.inputPassword}>
                                         <input
                                             className={classes.input}
@@ -76,7 +82,7 @@ function LoginPage() {
                                     <div className={classes.divNewUser}>
                                         <p>Novo usuário? <a href='#'> Criar Conta</a> </p>
                                     </div>
-                                </Form>
+                                </form>
                             )}
                         </Formik>
 

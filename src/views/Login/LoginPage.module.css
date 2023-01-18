@@ -62,26 +62,39 @@
     font-size: inherit;
     margin-bottom: 1rem;
 }
-/* .inputPassword{
-    height: 57px;
-    display: block;
-} */
-.inputPassword input{
-    width: 100%;
+.inputPassword{
     position: relative;
 }
-.inputPassword span{
-    padding: 10px;
-    min-width: 40px; 
-    background-repeat: no-repeat;
-    padding-left: 3rem;
+.inputPassword input{
+    width: 100%;
+    background-color: transparent;
 }
+/* .inputPassword span{
+} */
 .invisiblePassword{
     background-image: url("../../asset/invisiblePassword.svg");
+    background-size: 20px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 32px;
+    right: 20px;
+
     
 }
 .visiblePassword{
     background-image: url("../../asset/visiblePassword.svg");
+    background-size: 20px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    background-repeat: no-repeat;
 }
 .divButton {
     align-self: center;
