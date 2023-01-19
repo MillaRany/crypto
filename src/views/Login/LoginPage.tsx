@@ -4,48 +4,53 @@ import logo from "../../asset/logo-crypto.svg"
 import logoGoogle from "../../asset/google.svg"
 import logoMicrosoft from "../../asset/microsoft.svg"
 import { useState } from 'react';
-import axios from 'axios';
-
+import { useNavigate, Link } from 'react-router-dom';
 
 function LoginPage() {
     const [isVisiblePassword, setIsVisiblePassword] = useState(false)
     const handleClick = () => setIsVisiblePassword(!isVisiblePassword)
+    const navigate = useNavigate()
 
-    const initialValues={
+    const initialValues = {
         email: '',
         password: '',
     }
-    
+
     async function login(email:string, password:string) {
-        fetch(`./fake_users.json`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)})
-      
-            .catch(function (error) {
-                console.log(error)
-            })
-            
+        new Promise((resolve, reject) => {
+            return fetch(`./fake_users.json`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.email === email && data.password === password ) {
+                        resolve(data)
+                        navigate("/home")
+                        console.log("ok")
+                    } else {
+                        reject(new Error('error'))
+                    }
+                }, error => {
+                    reject(new Error(error.message))
+                })
+        })
     }
 
-    
 
     return (<>
         <main className={classes.main} >
 
-                <section className={classes.sectionMain}>
+            <section className={classes.sectionMain}>
                 <div className={classes.divLayout}>
                     <div className={classes.divLogo}>
                         <img src={logo} />
                     </div>
                     <div className={classes.divForm}>
                         <Formik initialValues={initialValues}
-                         
+
                             onSubmit={(values, { resetForm }) => {
                                 console.log(values)
-                                
+
                                 resetForm();
-                                login(initialValues.email, initialValues.password)
+                                login(values.email, values.password)
                             }}>
                             {({
                                 values,
@@ -92,8 +97,8 @@ function LoginPage() {
                     </div>
 
                     <div className={classes.buttonsOptionsLogin}>
-                        <button><img src={logoGoogle} /></button>
-                        <button><img src={logoMicrosoft} /></button>
+                        <button onClick={()=>{navigate("/")}}><img src={logoGoogle} /></button>
+                        <button onClick={()=>{navigate("/")}}><img src={logoMicrosoft} /></button>
                     </div>
                 </div>
                 <footer className={classes.footer}>

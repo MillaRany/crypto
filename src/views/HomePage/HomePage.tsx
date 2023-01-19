@@ -1,9 +1,16 @@
 import React from 'react'
 
 function HomePage() {
+  
+ function logout() {
+    localStorage.clear();
+    window.location.href = '/';
+}
+
   return (
-    <button>sair</button>
+    <button onClick={logout}>sair</button>
   )
 }
 
 export default HomePage
+

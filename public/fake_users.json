@@ -1,8 +1,4 @@
-{"data":
-    [
-        {
-            "email": "milla@transfero.com",
-            "password": "12345678"
-        }
-    ]
+{
+    "email": "milla@transfero.com",
+    "password": "12345678"
 }

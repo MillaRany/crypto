@@ -10,7 +10,7 @@
 .divLayout {
     width: 100%;
     min-height: 100%;
-    max-width: 565px;    
+    max-width: 565px;
     padding: 95px 20px 100px 20px;
 }
 
@@ -43,7 +43,8 @@
     flex-direction: column;
     width: 100%;
 }
-.form h2{
+
+.form h2 {
     font-size: 20px;
     margin: 10px;
 }
@@ -62,16 +63,17 @@
     font-size: inherit;
     margin-bottom: 1rem;
 }
-.inputPassword{
+
+.inputPassword {
     position: relative;
 }
-.inputPassword input{
+
+.inputPassword input {
     width: 100%;
     background-color: transparent;
 }
-/* .inputPassword span{
-} */
-.invisiblePassword{
+
+.invisiblePassword {
     background-image: url("../../asset/invisiblePassword.svg");
     background-size: 20px;
     display: block;
@@ -82,9 +84,10 @@
     bottom: 32px;
     right: 20px;
 
-    
+
 }
-.visiblePassword{
+
+.visiblePassword {
     background-image: url("../../asset/visiblePassword.svg");
     background-size: 20px;
     display: block;
@@ -96,6 +99,7 @@
     right: 20px;
     background-repeat: no-repeat;
 }
+
 .divButton {
     align-self: center;
     margin-top: 2rem;
@@ -110,7 +114,10 @@
     font-size: 22px;
     border: solid 3px #4553fd;
 }
-
+.divButton button:hover {
+    background-color: #3542ca;
+    border: solid 3px #3542ca;
+}
 .divNewUser {
     display: block;
     text-align: center;
@@ -144,14 +151,17 @@
     color: #7c728d;
     font-size: 17px;
 }
-.buttonsOptionsLogin{
+
+.buttonsOptionsLogin {
     display: flex;
     align-items: row;
     justify-content: center;
     margin-top: 50px;
+
 }
-.buttonsOptionsLogin button{
-    width: 35% ;
+
+.buttonsOptionsLogin button {
+    width: 35%;
     height: 60px;
     margin: 1rem;
 
@@ -159,16 +169,27 @@
     background-color: white;
     border: solid #e6e7e9;
     border-radius: 10px;
+    cursor: pointer;
 
 }
-.footer{
+
+.buttonsOptionsLogin button:active {
+    -webkit-box-shadow: 0px 0px 10px -5px rgba(168,159,168,1);
+    -moz-box-shadow: 0px 0px 10px -5px rgba(168,159,168,1);
+    box-shadow: 0px 0px 10px -5px rgba(168,159,168,1);
+
+}
+
+.footer {
     margin: 6px;
     text-align: center;
 }
-.footer p{
+
+.footer p {
     margin: 10px;
     font-size: 18px;
 }
-.footer a{
+
+.footer a {
     text-decoration: none;
 }
