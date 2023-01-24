@@ -1,14 +1,14 @@
-import React from 'react'
-
 function HomePage() {
-  
- function logout() {
+
+  function logout() {
     localStorage.clear();
     window.location.href = '/';
-}
+  }
 
   return (
-    <button onClick={logout}>sair</button>
+    <div>
+      <button onClick={logout}>sair</button>
+    </div>
   )
 }
 
